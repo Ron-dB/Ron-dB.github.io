@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ron de Bruijn — Assistant Professor, TU Eindhoven</title>
+  <meta name="description" content="Personal website of Ron de Bruijn, Assistant Professor at Eindhoven University of Technology (TU/e)." />
+  <meta name="author" content="Ron de Bruijn" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ron de Bruijn — Assistant Professor, TU/e" />
+  <meta property="og:description" content="Personal website of Ron de Bruijn, Assistant Professor at Eindhoven University of Technology." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rondebruijn.eu/" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">Ron de Bruijn</a>
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero / About -->
+    <section id="about" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Assistant Professor · TU Eindhoven</p>
+          <h1>Ron de Bruijn</h1>
+          <p class="lede">
+            I am an Assistant Professor at <a href="https://www.tue.nl/" target="_blank" rel="noopener">Eindhoven University of Technology (TU/e)</a>,
+            in the Department of <em>[Department]</em>. My research focuses on
+            <em>[your research area in one sentence]</em>.
+          </p>
+          <p>
+            <em>[Optional second paragraph: a few more details about your group, mission, or current focus.
+            Replace the placeholders with your own text.]</em>
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="#contact">Get in touch</a>
+            <a class="btn btn-ghost" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <!-- Replace photo.jpg with your own picture (square works best, ~600x600px) -->
+          <img src="photo.jpg" alt="Portrait of Ron de Bruijn"
+               onerror="this.outerHTML='<div class=&quot;photo-placeholder&quot;>Add <code>photo.jpg</code><br>(square, ~600×600)</div>'" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research" class="section">
+      <div class="container">
+        <h2>Research</h2>
+        <p class="section-lede">
+          My research interests lie at the intersection of <em>[topic A]</em>, <em>[topic B]</em>, and <em>[topic C]</em>.
+          Below are the main themes I am currently working on.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Theme 1</h3>
+            <p>Short description of this research theme. What is the question? Why does it matter? Who do you collaborate with?</p>
+          </article>
+          <article class="card">
+            <h3>Theme 2</h3>
+            <p>Short description of this research theme. Replace placeholder text with your own.</p>
+          </article>
+          <article class="card">
+            <h3>Theme 3</h3>
+            <p>Short description of this research theme. You can add or remove cards as needed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications" class="section section-alt">
+      <div class="container">
+        <h2>Selected Publications</h2>
+        <p class="section-lede">
+          For a complete and up-to-date list, see my
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a> profile.
+        </p>
+
+        <ol class="pubs">
+          <li>
+            <span class="pub-authors"><strong>de Bruijn, R.</strong>, Author B, &amp; Author C.</span>
+            <span class="pub-title">Title of the paper.</span>
+            <span class="pub-venue"><em>Journal or Conference Name</em>, Year.</span>
+            <span class="pub-links">
+              <a href="#">PDF</a> · <a href="#">DOI</a> · <a href="#">Code</a>
+            </span>
+          </li>
+          <li>
+            <span class="pub-authors">Author A, <strong>de Bruijn, R.</strong>, &amp; Author C.</span>
+            <span class="pub-title">Another paper title here.</span>
+            <span class="pub-venue"><em>Journal Name</em>, Year.</span>
+            <span class="pub-links">
+              <a href="#">PDF</a> · <a href="#">DOI</a>
+            </span>
+          </li>
+          <li>
+            <span class="pub-authors"><strong>de Bruijn, R.</strong> &amp; Author B.</span>
+            <span class="pub-title">A third paper title.</span>
+            <span class="pub-venue"><em>Conference Name</em>, Year.</span>
+            <span class="pub-links">
+              <a href="#">PDF</a> · <a href="#">DOI</a>
+            </span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Teaching -->
+    <section id="teaching" class="section">
+      <div class="container">
+        <h2>Teaching</h2>
+        <p class="section-lede">
+          I teach in the <em>[Bachelor / Master programme name]</em> at TU/e.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Course Code — Course Name</h3>
+            <p class="meta">Semester · Level (BSc/MSc)</p>
+            <p>Brief description of the course content and your role (lecturer, coordinator, etc.).</p>
+          </article>
+          <article class="card">
+            <h3>Course Code — Course Name</h3>
+            <p class="meta">Semester · Level</p>
+            <p>Brief description.</p>
+          </article>
+        </div>
+
+        <h3 class="subhead">Student supervision</h3>
+        <p>
+          I am happy to supervise BSc and MSc thesis projects on topics related to my research themes.
+          If you are a TU/e student interested in working with me, feel free to <a href="#contact">get in touch</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <div>
+            <p><strong>Office</strong><br>
+              [Building name &amp; room number]<br>
+              Eindhoven University of Technology<br>
+              5612 AZ Eindhoven, the Netherlands
+            </p>
+            <p><strong>Email</strong><br>
+              <a href="mailto:r.de.bruijn@tue.nl">r.de.bruijn@tue.nl</a>
+            </p>
+          </div>
+          <div>
+            <p><strong>Find me online</strong></p>
+            <ul class="links">
+              <li><a href="https://research.tue.nl/" target="_blank" rel="noopener">TU/e research portal</a></li>
+              <li><a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a></li>
+              <li><a href="https://orcid.org/" target="_blank" rel="noopener">ORCID</a></li>
+              <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Ron de Bruijn · Built with HTML &amp; CSS · Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
