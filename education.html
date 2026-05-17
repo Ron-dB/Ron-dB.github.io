@@ -43,48 +43,8 @@
       </div>
     </section>
 
-    <!-- Education vision -->
-    <section class="section section-alt">
-      <div class="container">
-        <h2>Educational Vision</h2>
-        <div class="two-col">
-          <div>
-            <h3 style="margin-top:0;">Long-term</h3>
-            <p>
-              My long-term ambition is to further extend the MSc track Mechatronic Systems Design,
-              dedicated to training students as fully qualified mechatronic engineers. This means
-              building a coherent suite of courses that covers the complete mechatronic system:
-              from mechanical design and construction principles, through actuation and power
-              electronics, to sensing, metrology, and closed-loop control.
-            </p>
-            <p>
-              In this vision, students develop the ability to make system-level design decisions
-              and take responsibility for the full hardware development cycle. The Brainport Eindhoven
-              ecosystem, with its unique culture of collaboration between academia and high-tech industry,
-              provides an ideal context for this kind of education.
-            </p>
-          </div>
-          <div>
-            <h3 style="margin-top:0;">Short-term</h3>
-            <p>
-              In the near term, I focus on improving course structure, aligning content across courses,
-              and updating examples and assignments to better reflect current mechatronic design practice.
-              The course Applications of Design Principles (4CM50) is currently being renamed to
-              <em>Design Principles for Precision Mechatronics</em>, reflecting an update to its content
-              that brings it closer to modern mechatronic system design.
-            </p>
-            <p>
-              I am also involved in exploring new course formats that integrate hardware development
-              more closely into the learning process, bridging the gap between design principles and
-              practical realization.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Master's track MSD -->
-    <section class="section">
+    <section class="section section-alt">
       <div class="container">
         <h2>Master's Track: Mechatronic Systems Design</h2>
         <div class="two-col">
@@ -104,7 +64,7 @@
               the Brainport Eindhoven region.
             </p>
             <a class="btn" href="https://www.tue.nl/en/education/graduate-school/masters-track-mechatronic-systems-design" target="_blank" rel="noopener" style="display:inline-block; margin-top:.5rem;">
-              Official track page ↗
+              Official track page &#8599;
             </a>
           </div>
           <div>
@@ -152,7 +112,7 @@
     </section>
 
     <!-- Courses -->
-    <section class="section section-alt">
+    <section class="section">
       <div class="container">
         <h2>Courses</h2>
         <p class="section-lede">
@@ -164,7 +124,7 @@
         <div class="cards">
           <article class="card">
             <h3>Principles of Design and Programming (4CA10)</h3>
-            <p class="meta">Bachelor, year 1 · Responsible Lecturer</p>
+            <p class="meta">Bachelor, year 1 &middot; Responsible Lecturer</p>
             <p>
               A first-year core bachelor course introducing students to mechanical design thinking.
               I am responsible for the mechanical design part of the course, which covers approximately
@@ -174,7 +134,7 @@
           </article>
           <article class="card">
             <h3>Design Principles (4CC50)</h3>
-            <p class="meta">Bachelor, year 3 · Responsible Lecturer</p>
+            <p class="meta">Bachelor, year 3 &middot; Responsible Lecturer</p>
             <p>
               A continuation of 4CA10 at a deeper level. Focuses on a thorough understanding of
               mechanical design principles and their application in precision systems. Core elective
@@ -183,7 +143,85 @@
           </article>
           <article class="card">
             <h3>Mechatronic Design (4CC10)</h3>
-            <p class="meta">Bachelor, year 3 · Examiner</p>
+            <p class="meta">Bachelor, year 3 &middot; Examiner</p>
             <p>
               A project-based core elective in which students design and develop a mechatronic
               system. I contribute to the assessment of the project work, evaluating both
+              technical quality and design process.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Design Principles for Precision Mechatronics (4CM50)</h3>
+            <p class="meta">Master &middot; Support</p>
+            <p>
+              A master-level course on design principles applied to precision mechatronic systems.
+              Previously called Applications of Design Principles, the course is being updated to
+              better reflect modern mechatronic system design practice.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student supervision -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Student Supervision</h2>
+        <p class="section-lede">
+          I supervise MSc and PDEng students on projects closely connected to my research pillars.
+          Students interested in working on precision mechatronics topics are welcome to get in touch.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <h3>High-Performance System Design</h3>
+            <p>
+              Projects focused on the design, realization, and experimental validation of
+              high-performance mechatronic systems. Students work on integrated hardware concepts
+              that push the limits of accuracy, throughput, or efficiency in demanding applications.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Mechatronic Design Principles</h3>
+            <p>
+              Projects that develop or validate fundamental design rules and principles in mechatronics.
+              Topics include actuation principles, transmission design, structural dynamics, and
+              mechatronic architecture, often with application to precision positioning systems.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Cross-Boundary Applications</h3>
+            <p>
+              Projects that apply mechatronic design principles in adjacent fields such as
+              scientific instrumentation, medical technology, or large-scale research infrastructure.
+              These projects combine hardware realization with cross-disciplinary system thinking.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Ron de Bruijn &middot; Eindhoven University of Technology &middot; <a href="mailto:r.g.c.d.bruijn@tue.nl">r.g.c.d.bruijn@tue.nl</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.nav-toggle');
+    const nav    = document.querySelector('.nav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>

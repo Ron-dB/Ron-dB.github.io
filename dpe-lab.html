@@ -31,7 +31,7 @@
     <!-- Page intro -->
     <section class="page-intro section">
       <div class="container">
-        <p class="eyebrow">Research Line · Control Systems Technology, TU/e</p>
+        <p class="eyebrow">Research Line &middot; Control Systems Technology, TU/e</p>
         <h1>Design for Precision Engineering</h1>
         <p class="section-lede">
           The Design for Precision Engineering (DPE) research line is part of the
@@ -62,21 +62,19 @@
               directly to practice.
             </p>
             <a class="btn" href="https://www.tue.nl/en/research/research-groups/control-systems-technology/design-for-precision-engineering" target="_blank" rel="noopener" style="display:inline-block; margin-top:.5rem;">
-              Official DPE page ↗
+              Official DPE page &#8599;
             </a>
           </div>
           <div>
             <div class="card" style="height:auto;">
-              <h3>Lab Locations</h3>
-              <p style="margin:0.5rem 0 0.2rem;"><strong>DPE Lab</strong><br>
+              <h3>Lab Location</h3>
+              <p style="margin:0.5rem 0 0;">
+                <strong>DPE Lab</strong><br>
                 Gemini-North, room -1.559<br>
                 TU Eindhoven
               </p>
-              <p style="margin:0.8rem 0 0.2rem;"><strong>Office</strong><br>
-                Pendulum 3.16<br>
-                TU Eindhoven
-              </p>
-              <p style="margin:0.8rem 0 0;"><strong>Contact</strong><br>
+              <p style="margin:0.8rem 0 0;">
+                <strong>Contact</strong><br>
                 <a href="mailto:r.g.c.d.bruijn@tue.nl">r.g.c.d.bruijn@tue.nl</a><br>
                 <a href="tel:+31402472312">+31 40 247 2312</a>
               </p>
@@ -105,7 +103,7 @@
               The aim is hardware that is predictable, reproducible, and manufacturable.
             </p>
             <p style="margin-top:.8rem;">
-              <a href="https://www.tue.nl/en/research/research-groups/control-systems-technology/design-for-precision-engineering/mechanical-design" target="_blank" rel="noopener">Learn more ↗</a>
+              <a href="https://www.tue.nl/en/research/research-groups/control-systems-technology/design-for-precision-engineering/mechanical-design" target="_blank" rel="noopener">Learn more &#8599;</a>
             </p>
           </article>
           <article class="card">
@@ -118,7 +116,7 @@
               This is the focus area in which my own research is primarily situated.
             </p>
             <p style="margin-top:.8rem;">
-              <a href="https://www.tue.nl/en/research/research-groups/control-systems-technology/design-for-precision-engineering/mechatronic-systems-design" target="_blank" rel="noopener">Learn more ↗</a>
+              <a href="https://www.tue.nl/en/research/research-groups/control-systems-technology/design-for-precision-engineering/mechatronic-systems-design" target="_blank" rel="noopener">Learn more &#8599;</a>
             </p>
           </article>
           <article class="card">
@@ -130,7 +128,7 @@
               mechanical and mechatronic design.
             </p>
             <p style="margin-top:.8rem;">
-              <a href="https://www.tue.nl/en/research/research-groups/control-systems-technology/design-for-precision-engineering/opto-mechatronics" target="_blank" rel="noopener">Learn more ↗</a>
+              <a href="https://www.tue.nl/en/research/research-groups/control-systems-technology/design-for-precision-engineering/opto-mechatronics" target="_blank" rel="noopener">Learn more &#8599;</a>
             </p>
           </article>
         </div>
@@ -186,7 +184,7 @@
       </div>
     </section>
 
-    <!-- Contact / Collaboration -->
+    <!-- Collaboration -->
     <section class="section">
       <div class="container">
         <h2>Collaboration</h2>
@@ -194,8 +192,38 @@
           If you are interested in collaborating with the DPE lab, whether through a research project,
           industrial partnership, or student internship, please get in touch.
         </p>
-        <div class="contact-grid">
-          <div>
-            <p><strong>Ron de Bruijn</strong><br>
-              Assistant Professor, DPE / CST<br>
-        
+        <p>
+          <strong>Ron de Bruijn</strong><br>
+          Assistant Professor, DPE / CST<br>
+          Eindhoven University of Technology<br>
+          <a href="mailto:r.g.c.d.bruijn@tue.nl">r.g.c.d.bruijn@tue.nl</a><br>
+          <a href="tel:+31402472312">+31 40 247 2312</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Ron de Bruijn &middot; Eindhoven University of Technology &middot; <a href="mailto:r.g.c.d.bruijn@tue.nl">r.g.c.d.bruijn@tue.nl</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.nav-toggle');
+    const nav    = document.querySelector('.nav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
