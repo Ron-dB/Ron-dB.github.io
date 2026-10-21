@@ -17,6 +17,7 @@
           <li><a href="index.html">About</a></li>
           <li><a href="research.html" class="active">Research &amp; Publications</a></li>
           <li><a href="education.html">Education</a></li>
+          <li><a href="team.html">Team</a></li>
           <li><a href="dpe-lab.html">DPE Lab</a></li>
         </ul>
       </nav>
@@ -41,28 +42,43 @@
       </div>
     </section>
 
+    <!-- Research one-pager callout -->
+    <section class="section section-alt" style="padding: 1.2rem 0;">
+      <div class="container">
+        <a
+          href="assets/research-one-pager.pdf"
+          target="_blank"
+          rel="noopener"
+          class="btn"
+        >Download research overview (PDF) &#8599;</a>
+      </div>
+    </section>
+
+
     <!-- Vision -->
     <section class="section section-alt">
       <div class="container">
         <h2>Research Vision</h2>
         <p>
-          My research aims to extend classical precision engineering design principles toward modern,
-          multidisciplinary mechatronic principles. Systems in the high-tech domain increasingly require
-          accuracy, reproducibility, throughput, and cost efficiency to improve simultaneously. Meeting
-          these demands calls for a rethink of how mechanical, electrical, and control subsystems are
-          designed and integrated.
+          My research extends classical precision engineering design principles towards modern,
+          multidisciplinary mechatronic design, covering actuation, metrology, control and system
+          engineering, with a strong emphasis on both hardware realization and the underlying design
+          process. Systems in the high-tech domain increasingly require accuracy, reproducibility,
+          throughput and cost efficiency to improve simultaneously, which calls for a rethink of how
+          mechanical, electrical and control subsystems are designed and integrated.
         </p>
         <p>
-          A recurring theme in my work is the <em>mechatronic integration</em> of mechanical systems:
-          transforming traditionally passive components into active elements within a mechatronic system
-          to enhance performance while maintaining minimal complexity. This requires a deep understanding
-          of hardware design alongside actuation, sensing, and control at the system level.
+          A recurring theme is the mechatronic integration of mechanical systems: turning traditionally
+          passive components into active contributors to system performance. In practice, a substantial
+          part of the effort lies in truly understanding the problem before proposing solutions. During
+          the development of innovative concepts, I aim to fundamentally understand the underlying
+          principles, often extending existing design principles in the process.
         </p>
         <p>
-          Much of my research is carried out in close collaboration with industrial partners in the
-          semiconductor equipment, scientific instrumentation, and medical technology domains.
           Application-driven projects give rise to fundamental research questions, and the insights
-          gained in turn enable better-performing, more reproducible systems across a wide range of applications.
+          gained in turn enable better-performing, more reproducible systems across a wide range of
+          domains. Most projects are carried out in close collaboration with industrial partners in the
+          semiconductor equipment, scientific instrumentation, and medical technology sectors.
         </p>
 
         <h3 class="subhead">Three research pillars</h3>
@@ -104,6 +120,55 @@
           that are addressed in Pillar II, resulting in new insights and design principles. Cross-boundary
           projects (Pillar III) both benefit from and contribute to the methodologies developed in Pillar II.
         </p>
+      </div>
+    </section>
+
+
+    <!-- Current Projects -->
+    <section class="section" id="projects">
+      <div class="container">
+        <h2>Current Projects</h2>
+        <p class="section-lede">
+          A selection of ongoing research projects across the three pillars.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <p class="meta" style="color:var(--accent); font-weight:500; font-size:.82rem; margin-bottom:.5rem;">Pillar I &middot; Design and development</p>
+            <h3>Deformable Wafer Table</h3>
+            <p>
+              Design of an active wafer table that enables local compensation of wafer deformations
+              using multiple thin layers of piezoelectric material, allowing both in-plane and
+              out-of-plane corrections. Key challenges include validating deformations at the scale
+              of single-digit nanometres and closing the feedback loop for real-time compensation.
+              Required for further scaling of integrated circuits.
+            </p>
+            <p style="margin-top:.8rem; font-size:.9rem; color: var(--text-muted);">With: <a href="team.html">Bas Huisman</a></p>
+          </article>
+          <article class="card">
+            <p class="meta" style="color:var(--accent); font-weight:500; font-size:.82rem; margin-bottom:.5rem;">Pillar II &middot; Fundamental mechatronics</p>
+            <h3>Inerters in High-Tech Systems</h3>
+            <p>
+              The inerter provides a force proportional to relative acceleration, extending the
+              passive mechanical toolbox beyond springs and dampers. Together, the three passive
+              elements allow any desired passive mechanical network to be synthesised. This project
+              investigates the application of inerters in semiconductor manufacturing and other
+              high-tech systems, with improved vibration isolators as a key direction.
+            </p>
+            <p style="margin-top:.8rem; font-size:.9rem; color: var(--text-muted);">With: <a href="team.html">Michiel Collignon</a></p>
+          </article>
+          <article class="card">
+            <p class="meta" style="color:var(--accent); font-weight:500; font-size:.82rem; margin-bottom:.5rem;">Pillar III &middot; Cross-boundary mechatronics</p>
+            <h3>Fluid-Mechatronics</h3>
+            <p>
+              Active compensation of flow-induced vibrations in optical systems used in lithography.
+              Cooling flows introduce disturbances that passive expansion chambers cannot sufficiently
+              attenuate. The project covers vibration transmission path modelling in cooling circuits
+              (including electro-mechano-acoustic coupling), the design of actuation systems for
+              waterline acoustics, and robust active noise control approaches.
+            </p>
+            <p style="margin-top:.8rem; font-size:.9rem; color: var(--text-muted);">With: <a href="team.html">Marin Jalšić</a></p>
+          </article>
+        </div>
       </div>
     </section>
 

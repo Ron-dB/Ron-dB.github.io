@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team, Ron de Bruijn</title>
+  <meta name="description" content="PhD candidates in the de Bruijn group at TU/e, Design for Precision Engineering, precision mechatronics." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .team-card-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      background: #e8eaed;
+    }
+    .team-card-body {
+      padding: 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .team-card-name {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0 0 .2rem;
+      color: var(--text);
+    }
+    .team-card-year {
+      font-size: .82rem;
+      color: var(--text-muted);
+      margin: 0 0 1rem;
+    }
+    .team-card-desc {
+      font-size: .93rem;
+      line-height: 1.6;
+      color: var(--text);
+      flex: 1;
+      margin: 0 0 1rem;
+    }
+    .team-card-links {
+      font-size: .85rem;
+      margin-top: auto;
+    }
+    .team-card-links a {
+      margin-right: .75rem;
+    }
+    .award-badge {
+      display: inline-block;
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      color: #7a5c00;
+      font-size: .78rem;
+      font-weight: 500;
+      padding: .2rem .55rem;
+      border-radius: 3px;
+      margin-bottom: .8rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">Ron de Bruijn</a>
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="index.html">About</a></li>
+          <li><a href="research.html">Research &amp; Publications</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="team.html" class="active">Team</a></li>
+          <li><a href="dpe-lab.html">DPE Lab</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-intro section">
+      <div class="container">
+        <p class="eyebrow">Team</p>
+        <h1>PhD Candidates</h1>
+        <p class="section-lede">
+          I supervise PhD candidates working on fundamental and applied challenges in precision mechatronics.
+          Each project is driven by a concrete engineering problem from industry or science,
+          and aims to generate new knowledge that is validated through hardware.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Current PhD Candidates</h2>
+        <div class="team-grid">
+
+          <!-- Bas Huisman -->
+          <div class="team-card">
+            <img
+              class="team-card-photo"
+              src="assets/bas-huisman.jpg"
+              alt="Bas Huisman"
+              loading="lazy"
+            />
+            <div class="team-card-body">
+              <p class="team-card-name">Bas Huisman</p>
+              <p class="team-card-year">Since 2024</p>
+              <span class="award-badge">&#127942; Best Demonstration Award, DSPE 2025</span>
+              <p class="team-card-desc">
+                Works on the design of an active wafer table that enables local compensation of
+                wafer deformations. The table consists of multiple thin layers of piezoelectric
+                material, allowing both in-plane and out-of-plane corrections. Key challenges lie
+                in validating deformations at the scale of single-digit nanometres and closing the
+                feedback loop for real-time compensation. This technology is required to further
+                scale down the size of integrated circuits.
+              </p>
+              <div class="team-card-links">
+                <a href="https://research.tue.nl/en/persons/bas-huisman/" target="_blank" rel="noopener">TU/e profile &#8599;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marin Jalšić -->
+          <div class="team-card">
+            <img
+              class="team-card-photo"
+              src="assets/marin-jalsic.jpg"
+              alt="Marin Jalšić"
+              loading="lazy"
+            />
+            <div class="team-card-body">
+              <p class="team-card-name">Marin Jalšić</p>
+              <p class="team-card-year">Since 2024</p>
+              <p class="team-card-desc">
+                Works on active compensation of flow-induced vibrations in optical systems used
+                in lithography. Cooling flows introduce disturbances that cannot be sufficiently
+                mitigated by passive means alone. The project covers vibration transmission path
+                modelling in cooling circuits (including electro-mechano-acoustic coupling), the
+                design of actuation systems for waterline acoustics, and robust active noise
+                control approaches.
+              </p>
+              <div class="team-card-links">
+                <a href="https://research.tue.nl/en/persons/marin-jal%C5%A1i%C4%87/" target="_blank" rel="noopener">TU/e profile &#8599;</a>
+                <a href="https://research.tue.nl/en/projects/dynamics-of-air-entrapment-in-cooling-circuits-for-lithographic-e/" target="_blank" rel="noopener">Project &#8599;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Michiel Collignon -->
+          <div class="team-card">
+            <img
+              class="team-card-photo"
+              src="assets/michiel-collignon.jpg"
+              alt="Michiel Collignon"
+              loading="lazy"
+            />
+            <div class="team-card-body">
+              <p class="team-card-name">Michiel Collignon</p>
+              <p class="team-card-year">Since 2026</p>
+              <p class="team-card-desc">
+                Works on inerters in high-tech mechatronic systems. An inerter provides a force
+                proportional to the relative acceleration between its two terminals, extending the
+                passive mechanical toolbox beyond springs and dampers. With all three elements,
+                any desired passive mechanical network can be synthesised. A promising direction
+                is improved vibration isolators for semiconductor manufacturing equipment, where
+                passive solutions are preferred over active control loops.
+              </p>
+              <div class="team-card-links">
+                <a href="https://research.tue.nl/en/persons/michiel-collignon/" target="_blank" rel="noopener">TU/e profile &#8599;</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Ron de Bruijn &middot; Eindhoven University of Technology &middot; <a href="mailto:r.g.c.d.bruijn@tue.nl">r.g.c.d.bruijn@tue.nl</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.nav-toggle');
+    const nav    = document.querySelector('.nav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
