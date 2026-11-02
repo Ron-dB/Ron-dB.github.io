@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>naamloos - Paint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #008080; }
+  body {
+    font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", cursive;
+    display: flex; justify-content: center; align-items: flex-start;
+    padding: 12px 8px;
+  }
+  /* ---------- Win98 Paint window ---------- */
+  .win {
+    width: 100%; max-width: 860px; background: #c0c0c0;
+    border: 2px solid; border-color: #fff #000 #000 #fff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+    font-family: Tahoma, "MS Sans Serif", Arial, sans-serif; font-size: 12px;
+  }
+  .titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0); color: #fff; font-weight: bold;
+    padding: 3px 4px; display: flex; align-items: center; gap: 6px;
+  }
+  .titlebar .ico { width: 16px; height: 16px; background:
+    conic-gradient(red 0 25%, yellow 0 50%, lime 0 75%, blue 0); border: 1px solid #000; }
+  .titlebar .ctrls { margin-left: auto; display: flex; gap: 2px; }
+  .titlebar .ctrls span {
+    width: 16px; height: 14px; background: #c0c0c0; color: #000; font-size: 10px; line-height: 12px;
+    text-align: center; border: 1px solid; border-color: #fff #000 #000 #fff;
+  }
+  .menu { padding: 2px 4px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .menu u { text-decoration: underline; }
+  .body { display: flex; gap: 4px; padding: 0 4px; }
+  .tools {
+    width: 54px; flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; align-content: start;
+    padding-top: 2px;
+  }
+  .tools span {
+    height: 25px; background: #c0c0c0; border: 1px solid; border-color: #fff #000 #000 #fff;
+    font-size: 13px; display: flex; align-items: center; justify-content: center; filter: grayscale(1);
+  }
+  .tools span.on { border-color: #000 #fff #fff #000; background: #e0e0e0; }
+  .canvas-wrap {
+    flex: 1; min-width: 0; background: #808080; padding: 4px;
+    border: 2px solid; border-color: #808080 #fff #fff #808080; overflow: hidden;
+  }
+  .canvas {
+    background: #fff; position: relative; overflow: hidden;
+    padding: 18px 14px 40px; min-height: 900px;
+  }
+  .palette { display: flex; gap: 6px; padding: 4px; align-items: center; }
+  .palette .cur { width: 30px; height: 30px; position: relative; border: 1px solid; border-color:#808080 #fff #fff #808080; }
+  .palette .cur i { position: absolute; width: 14px; height: 14px; border: 1px solid #000; }
+  .palette .cur i:first-child { background: #ff0000; left: 3px; top: 3px; z-index: 1; }
+  .palette .cur i:last-child { background: #fff; left: 11px; top: 11px; }
+  .swatches { display: grid; grid-template-columns: repeat(14, 14px); gap: 1px; }
+  .swatches i { width: 14px; height: 14px; border: 1px solid; border-color: #808080 #fff #fff #808080; }
+  .status { display: flex; border-top: 1px solid #808080; padding: 2px 4px; gap: 4px; }
+  .status div { border: 1px solid; border-color: #808080 #fff #fff #808080; padding: 1px 4px; }
+  .status div:first-child { flex: 1; }
+
+  /* ---------- the "artwork" ---------- */
+  .wordart {
+    font-family: Impact, "Arial Black", "Comic Neue", sans-serif; font-weight: 900;
+    font-size: clamp(30px, 8vw, 64px); line-height: .95; margin: 6px 0 0 -4px;
+    transform: rotate(-4deg) skewX(-8deg);
+    background: linear-gradient(180deg, #ff0000, #ff8000 25%, #ffff00 45%, #00c000 60%, #0000ff 80%, #ff00ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(3px 3px 0 #000) drop-shadow(2px 2px 0 #808080);
+    letter-spacing: -1px;
+  }
+  .sub {
+    color: #0000ff; font-size: clamp(18px, 4.4vw, 26px); font-weight: 700;
+    transform: rotate(2.5deg); margin: 14px 0 0 30px; text-decoration: underline wavy #ff00ff;
+  }
+  /* pasted selection: white rectangle + leftover marching ants */
+  .pasted {
+    position: relative; background: #fff; display: inline-block; padding: 6px;
+    outline: 1px dashed #000; outline-offset: 2px; animation: ants .6s steps(2) infinite;
+  }
+  @keyframes ants { 50% { outline-color: #808080; } }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start; margin-top: 24px; }
+  .wafer { transform: rotate(7deg); margin: 0 0 0 10px; z-index: 2; }
+  .wafer figcaption { font-size: 14px; color: #ff0000; text-align: center; transform: rotate(-5deg); }
+  .note {
+    background: #ffff00; padding: 16px 18px 20px; flex: 1 1 280px; min-width: 240px;
+    font-size: clamp(19px, 4.6vw, 27px); font-weight: 700; line-height: 1.25; color: #000;
+    transform: rotate(-2deg); margin-top: 12px;
+    clip-path: polygon(0 3%, 6% 0, 34% 2%, 61% 0, 100% 4%, 98% 38%, 100% 71%, 97% 100%, 66% 97%, 30% 100%, 2% 96%, 0 62%, 3% 31%);
+    position: relative;
+  }
+  .note .big { color: #ff0000; font-size: 1.25em; display: inline-block; transform: rotate(3deg); }
+  .eraser { position: absolute; background: #fff; }
+  .loader { margin: 34px 0 0 8px; transform: rotate(1.5deg); max-width: 430px; }
+  .loader .lbl { font-family: Tahoma, Arial, sans-serif; font-size: 14px; margin-bottom: 3px; }
+  .bar {
+    height: 24px; border: 2px solid; border-color: #808080 #fff #fff #808080; background: #fff; padding: 2px;
+  }
+  .bar i {
+    display: block; height: 100%; width: 3%;
+    background: repeating-linear-gradient(90deg, #000080 0 10px, transparent 10px 12px);
+  }
+  .loader .eta { font-size: 15px; color: #008000; margin-top: 4px; }
+  .tomorrow {
+    margin: 40px 0 0 auto; width: fit-content; max-width: 100%; padding: 10px 16px;
+    font-size: clamp(22px, 6vw, 40px); font-weight: 700; color: #fff; background: #ff00ff;
+    transform: rotate(-6deg); border: 3px solid #000; box-shadow: 6px 6px 0 #00ffff;
+  }
+  .foot {
+    margin: 40px 0 0 14px; font-size: 16px; color: #800080; transform: rotate(-1.5deg); max-width: 520px;
+  }
+  .foot small { display: block; color: #808080; font-size: 12px; margin-top: 10px; transform: rotate(3deg); }
+  .doodle { position: absolute; pointer-events: none; }
+  .gift { display: block; margin: 18px 0 -30px 18px; transform: rotate(-8deg); }
+  .spray { position: absolute; inset: 0; pointer-events: none; }
+
+  /* ---------- Win98 error dialog ---------- */
+  .dlg-back { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 16px; z-index: 10; }
+  .dlg-back.show { display: flex; }
+  .dlg {
+    width: 100%; max-width: 360px; background: #c0c0c0;
+    border: 2px solid; border-color: #fff #000 #000 #fff; box-shadow: inset -1px -1px #808080, 4px 4px 0 rgba(0,0,0,.4);
+    font-family: Tahoma, "MS Sans Serif", Arial, sans-serif; font-size: 13px;
+    animation: shake .4s;
+  }
+  @keyframes shake { 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-3px); } }
+  .dlg .titlebar span:first-child { flex: 1; }
+  .dlg .msg { display: flex; gap: 12px; padding: 16px 14px 8px; align-items: flex-start; }
+  .dlg .x {
+    flex: none; width: 32px; height: 32px; border-radius: 50%; background: #ff0000; color: #fff;
+    font-weight: bold; font-size: 20px; display: flex; align-items: center; justify-content: center; border: 1px solid #800000;
+  }
+  .dlg .ok {
+    margin: 6px auto 12px; width: 76px; text-align: center; padding: 3px 0; background: #c0c0c0; cursor: pointer;
+    border: 2px solid; border-color: #fff #000 #000 #fff; outline: 1px dotted #000; outline-offset: -5px;
+  }
+  @media (max-width: 560px) {
+    body { padding: 0; }
+    .tools, .menu span:nth-child(n+4), .status div:nth-child(2) { display: none; }
+    .swatches { grid-template-columns: repeat(14, 12px); } .swatches i { width: 12px; height: 12px; }
+    .canvas { padding: 14px 10px 36px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .pasted, .dlg { animation: none; } }
+</style>
+</head>
+<body>
+<div class="win">
+  <div class="titlebar"><div class="ico"></div><span>naamloos - Paint</span>
+    <div class="ctrls"><span>_</span><span>□</span><span>×</span></div></div>
+  <div class="menu"><span><u>B</u>estand</span><span>Be<u>w</u>erken</span><span>Bee<u>l</u>d</span><span><u>A</u>fbeelding</span><span><u>K</u>leuren</span><span><u>H</u>elp</span></div>
+  <div class="body">
+    <div class="tools">
+      <span>✂</span><span class="on">⬚</span><span>◫</span><span>🧪</span><span>🔍</span><span>✏</span>
+      <span>🖌</span><span class="on">💨</span><span>A</span><span>╲</span><span>∿</span><span>▭</span>
+      <span>⬠</span><span>◯</span><span>▢</span><span>◧</span>
+    </div>
+    <div class="canvas-wrap">
+      <div class="canvas" id="canvas">
+        <svg class="spray" id="spray" aria-hidden="true"></svg>
+
+        <div class="wordart">GEFELICITEERD<br>DR. SANDER!!!1</div>
+        <div class="sub">je bent nu officieel doctor 🎓</div>
+
+        <div class="row">
+          <figure class="pasted wafer" style="margin:0">
+            <svg width="170" height="150" viewBox="0 0 170 150" aria-label="een slecht getekende vervormde wafer">
+              <path d="M85 12 C120 9 158 38 155 76 C153 113 121 141 83 138 C44 136 13 109 16 73 C18 40 47 15 85 12 Z" fill="#c0c0c0" stroke="#000" stroke-width="3"/>
+              <path d="M85 12 C120 9 158 38 155 76 C153 113 121 141 83 138 C44 136 13 109 16 73 C18 40 47 15 85 12 Z" fill="none" stroke="#000" stroke-width="2" transform="translate(4 -3)" opacity=".5"/>
+              <g stroke="#0000ff" stroke-width="2" fill="none">
+                <path d="M30 45 Q85 30 142 47"/><path d="M19 70 Q85 58 154 72"/><path d="M20 96 Q85 88 152 98"/><path d="M34 122 Q85 117 136 124"/>
+                <path d="M45 24 Q38 75 47 128"/><path d="M70 14 Q66 75 70 138"/><path d="M98 14 Q104 75 98 138"/><path d="M124 24 Q133 75 122 130"/>
+              </g>
+              <path d="M70 72 q8 -12 18 0" stroke="#ff0000" stroke-width="3" fill="none"/>
+              <circle cx="66" cy="62" r="3"/><circle cx="96" cy="60" r="3"/>
+              <rect x="128" y="2" width="38" height="22" fill="#fff"/>
+            </svg>
+            <figcaption>jouw wafer table<br>(vervormd)</figcaption>
+          </figure>
+
+          <div class="note">
+            Je PhD heeft ook <span class="big">8 JAAR</span> geduurd...<br><br>
+            dus dan kan je nu ook wel even wachten op je cadeau.
+            <div class="eraser" style="right:6px;bottom:4px;width:46px;height:18px"></div>
+            <div class="eraser" style="right:40px;bottom:12px;width:22px;height:12px"></div>
+          </div>
+        </div>
+
+        <div class="loader">
+          <div class="lbl">cadeau.exe wordt geladen... 3%</div>
+          <div class="bar"><i></i></div>
+          <div class="eta">Geschatte resterende tijd: ± 8 jaar</div>
+        </div>
+
+        <div class="tomorrow">Probeer morgen<br>nog een keer.</div>
+
+        <div class="foot">
+          P.S. onze planning is net zo vervormbaar als jouw wafer table.
+          <small>— je collega's (die dit om 23:47 in Paint hebben gemaakt)</small>
+        </div>
+
+        <!-- crooked hand-drawn doodles -->
+        <svg class="doodle" style="right:4%;top:150px" width="120" height="110" viewBox="0 0 120 110" aria-hidden="true">
+          <path d="M108 6 C96 30 80 52 40 74 C34 77 30 80 22 86" stroke="#ff0000" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M18 66 L20 90 L44 92" stroke="#ff0000" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="gift" width="70" height="80" viewBox="0 0 70 80" aria-hidden="true">
+          <rect x="10" y="32" width="50" height="42" fill="#ff0000" stroke="#000" stroke-width="2" transform="rotate(-6 35 53)"/>
+          <rect x="31" y="31" width="8" height="44" fill="#ffff00" transform="rotate(-6 35 53)"/>
+          <path d="M35 32 C20 10 8 26 33 31 C50 12 64 22 37 32" stroke="#ffff00" stroke-width="4" fill="none"/>
+          <text x="27" y="64" font-size="22" font-weight="bold" fill="#fff" font-family="Arial">?</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="palette">
+    <div class="cur"><i></i><i></i></div>
+    <div class="swatches" id="sw"></div>
+  </div>
+  <div class="status"><div>Klik op Help-onderwerpen in het menu Help voor hulp.</div><div>1024 x 768</div></div>
+</div>
+
+<div class="dlg-back" id="dlg" role="alertdialog" aria-labelledby="dlgmsg">
+  <div class="dlg">
+    <div class="titlebar"><span>cadeau.exe</span><div class="ctrls"><span>×</span></div></div>
+    <div class="msg"><div class="x">×</div><div id="dlgmsg">Het cadeau kan niet worden gevonden.<br><br>Probeer morgen nog een keer.</div></div>
+    <div class="ok" id="ok">OK</div>
+  </div>
+</div>
+
+<script>
+  // palette
+  const cols = ["#000","#808080","#800000","#808000","#008000","#008080","#000080","#800080","#808040","#004040","#0080ff","#004080","#8000ff","#804000",
+                "#fff","#c0c0c0","#ff0000","#ffff00","#00ff00","#00ffff","#0000ff","#ff00ff","#ffff80","#00ff80","#80ffff","#8080ff","#ff0080","#ff8040"];
+  document.getElementById("sw").innerHTML = cols.map(c => `<i style="background:${c}"></i>`).join("");
+
+  // spray-can splatter
+  const sp = document.getElementById("spray"), cv = document.getElementById("canvas");
+  function spray(cx, cy, r, color, n) {
+    let s = "";
+    for (let i = 0; i < n; i++) {
+      const a = Math.random() * 6.283, d = Math.sqrt(Math.random()) * r;
+      s += `<rect x="${(cx + Math.cos(a) * d).toFixed(0)}" y="${(cy + Math.sin(a) * d).toFixed(0)}" width="2" height="2" fill="${color}"/>`;
+    }
+    return s;
+  }
+  function paintSpray() {
+    const w = cv.clientWidth;
+    sp.setAttribute("width", w); sp.setAttribute("height", cv.clientHeight);
+    sp.innerHTML = spray(w * .85, 60, 34, "#00c000", 140) + spray(w * .12, 430, 28, "#ff00ff", 110)
+                 + spray(w * .7, 640, 40, "#0080ff", 150) + spray(w * .3, 860, 30, "#ff8040", 110);
+  }
+  paintSpray(); addEventListener("resize", paintSpray);
+
+  // the error dialog pops up by itself
+  const dlg = document.getElementById("dlg"), msg = document.getElementById("dlgmsg");
+  const msgs = [
+    "Het cadeau kan niet worden gevonden.<br><br>Probeer morgen nog een keer.",
+    "Nee echt. MORGEN.",
+    "cadeau.exe heeft een ongeldige bewerking uitgevoerd en wordt afgesloten.<br><br>Neem contact op met je collega's.",
+    "Zelfs een vervormbare wafer table wordt niet sneller als je blijft klikken."
+  ];
+  let n = 0;
+  function pop() { msg.innerHTML = msgs[Math.min(n, msgs.length - 1)]; dlg.classList.add("show"); n++; }
+  function close() { dlg.classList.remove("show"); setTimeout(pop, n < msgs.length ? 9000 : 30000); }
+  document.getElementById("ok").addEventListener("click", close);
+  dlg.querySelector(".ctrls span").addEventListener("click", close);
+  setTimeout(pop, 3500);
+</script>
+</body>
+</html>
